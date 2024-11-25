@@ -1,0 +1,18 @@
+{
+  "proxy": "",
+  "output": "output",
+  "user": [
+    {
+      "platform": "Bilibili",
+      "id": "27519423",
+      "name": "方便",
+      "interval": 10,
+      "format": "mp4",
+      "output": "bilibili_鹿乃",
+      "proxy": "",
+      "headers": {
+        "Referer": "https://live.bilibili.com/"
+      },
+      "crypto_js_url": "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js",
+      "cookies": "SESSDATA=xxxxx; bili_jct=xxxxx"
+    }]}
