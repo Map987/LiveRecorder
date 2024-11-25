@@ -1,5 +1,14 @@
 <img src="https://socialify.git.ci/auqhjjqdo/LiveRecorder/image?font=Inter&forks=1&issues=1&language=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto" alt="LiveRecorder"/>
 
+```
+# 下载源码（没有git可以直接从release下载Source code）
+!git clone https://github.com/Map987/LiveRecorder
+%cd /content/LiveRecorder
+# 安装依赖
+!python3 -m pip install .
+# 源码运行
+!python3 live_recorder.py
+```
 ## 简介
 
 一款无人值守直播录制脚本，基于强大的[Streamlink](https://streamlink.github.io)
