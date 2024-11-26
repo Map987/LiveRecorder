@@ -67,7 +67,7 @@ class LiveRecoder:
         self.mState = 0
         while True:
 
-            if self.check_checkpoint()
+            if self.check_checkpoint():
                 break
             try:
                 logger.info(f'{self.flag}正在检测直播状态')
