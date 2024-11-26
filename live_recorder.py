@@ -53,7 +53,15 @@ class LiveRecoder:
         except IOError:
             logger.error('无法读取checkpoint.txt文件')
             return False
-		
+
+    def update_checkpoint(self, value):
+        try:
+            with open('checkpoint.txt', 'w') as f:
+                f.write(str(value))
+        except IOError:
+            logger.error('无法写入checkpoint.txt文件')
+
+
     async def start(self):
         self.ssl = True
         self.mState = 0
@@ -170,7 +178,12 @@ class LiveRecoder:
             logger.info(f'{self.flag}开始录制：{filename}')
             # 调用streamlink录制直播
             result = self.stream_writer(stream, url, filename)
-            # 录制成功、format配置存在且不等于直播平台默认格式时运行ffmpeg封装
+            # 录制成功、format配置存在、且不等于直播平台默认格式时，运行ffmpeg封装
+
+            #暂停怎么也能到这里
+            if result:
+                self.update_checkpoint(0)
+		    
             if result and self.format and self.format != format:
                 self.run_ffmpeg(filename, format)
             recording.pop(url, None)
