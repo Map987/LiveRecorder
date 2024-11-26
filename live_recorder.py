@@ -243,7 +243,7 @@ class Bilibili(LiveRecoder):
 		headers=headers
             )).json()
             if response['data']['live_status']:
-                print(response['data']['live_status']
+                print(response['data']['live_status'])
             if response['data']['live_status'] == 1:
                 return
             if response['data']['live_status'] == 1:
