@@ -148,7 +148,9 @@ class LiveRecoder:
         }
         for half, full in char_dict.items():
             title = title.replace(half, full)
-        filename = f'[{live_time}]{self.flag}{title[:50]}.{format}'
+        #filename = f'[{live_time}]{self.flag}{title[:50]}.{format}'
+        filename = f'[{live_time}]{title[:50]}.{format}' 
+	    #文件夹 bilibili_鹿乃 ，文件名 [2024.11.26 21.01.58][Bilibili][方便]LofiGirl的音乐自习室.mp4'
         return filename
 
     def get_streamlink(self):
