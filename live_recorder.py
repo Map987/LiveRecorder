@@ -45,10 +45,22 @@ class LiveRecoder:
         self.get_cookies()
         self.client = self.get_client()
 
+    def check_checkpoint(self):
+        try:
+            with open('checkpoint.txt', 'r') as f:
+                content = f.read().strip()
+            return content == '1'
+        except IOError:
+            logger.error('无法读取checkpoint.txt文件')
+            return False
+		
     async def start(self):
         self.ssl = True
         self.mState = 0
         while True:
+
+            if self.check_checkpoint()
+                break
             try:
                 logger.info(f'{self.flag}正在检测直播状态')
                 logger.info(f'预配置刷新间隔：{self.interval}s')
@@ -216,8 +228,13 @@ class Bilibili(LiveRecoder):
 		headers=headers
             )).json()
             if response['data']['live_status']:
-              print(response['data']['live_status'])
+                print(response['data']['live_status']
             if response['data']['live_status'] == 1:
+                return
+            if response['data']['live_status'] == 1:
+
+                with open("checkpoint.txt", "w") as f:
+                    f.write("1")
                 title = response['data']['title']
                 stream = self.get_streamlink().streams(url).get('best')  # HTTPStream[flv]
                 await asyncio.to_thread(self.run_record, stream, url, title, 'flv')
