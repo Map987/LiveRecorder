@@ -215,7 +215,7 @@ class Bilibili(LiveRecoder):
                 params={'room_id': self.id},
 		headers=headers
             )).json()
-            if response['data']['live_status']
+            if response['data']['live_status']:
               print(response['data']['live_status'])
             if response['data']['live_status'] == 1:
                 title = response['data']['title']
