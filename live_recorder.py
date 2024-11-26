@@ -210,6 +210,7 @@ class Bilibili(LiveRecoder):
                 url='https://api.live.bilibili.com/room/v1/Room/get_info',
                 params={'room_id': self.id}
             )).json()
+            print(response['data']['live_status'])
             if response['data']['live_status'] == 1:
                 title = response['data']['title']
                 stream = self.get_streamlink().streams(url).get('best')  # HTTPStream[flv]
