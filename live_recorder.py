@@ -25,7 +25,12 @@ from streamlink_cli.streamrunner import StreamRunner
 
 recording: Dict[str, Tuple[StreamIO, FileOutput]] = {}
 
+if not os.path.exists("checkpoint.txt"):
+    with open("checkpoint.txt", 'w') as f:
+    f.write('0')
 
+
+		      
 class LiveRecoder:
     def __init__(self, config: dict, user: dict):
         self.id = user['id']
