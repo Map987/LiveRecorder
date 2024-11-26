@@ -27,7 +27,7 @@ recording: Dict[str, Tuple[StreamIO, FileOutput]] = {}
 
 if not os.path.exists("checkpoint.txt"):
     with open("checkpoint.txt", 'w') as f:
-    f.write('0')
+        f.write('0')
 
 
 		      
