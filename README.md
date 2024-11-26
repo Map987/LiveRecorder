@@ -9,6 +9,156 @@
 # 源码运行
 !python3 live_recorder.py
 ```
+
+```
+Cloning into 'LiveRecorder'...
+remote: Enumerating objects: 546, done.
+remote: Counting objects: 100% (265/265), done.
+remote: Compressing objects: 100% (84/84), done.
+remote: Total 546 (delta 225), reused 188 (delta 181), pack-reused 281 (from 1)
+Receiving objects: 100% (546/546), 215.42 KiB | 2.48 MiB/s, done.
+Resolving deltas: 100% (317/317), done.
+/content/LiveRecorder
+Processing /content/LiveRecorder
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... done
+Collecting streamlink>=6.8.2 (from LiveRecorder==0.1.0)
+  Downloading streamlink-7.0.0-py3-none-any.whl.metadata (6.5 kB)
+Requirement already satisfied: httpx>=0.27.0 in /usr/local/lib/python3.10/dist-packages (from httpx[http2]>=0.27.0->LiveRecorder==0.1.0) (0.27.2)
+Collecting ffmpeg-python>=0.2.0 (from LiveRecorder==0.1.0)
+  Downloading ffmpeg_python-0.2.0-py3-none-any.whl.metadata (1.7 kB)
+Collecting loguru>=0.7.2 (from LiveRecorder==0.1.0)
+  Downloading loguru-0.7.2-py3-none-any.whl.metadata (23 kB)
+Collecting jsonpath-ng>=1.6.1 (from LiveRecorder==0.1.0)
+  Downloading jsonpath_ng-1.7.0-py3-none-any.whl.metadata (18 kB)
+Collecting jsengine>=1.0.7.post1 (from LiveRecorder==0.1.0)
+  Downloading jsengine-1.0.7.post1-py2.py3-none-any.whl.metadata (6.0 kB)
+Collecting quickjs>=1.19.4 (from LiveRecorder==0.1.0)
+  Downloading quickjs-1.19.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl.metadata (590 bytes)
+Collecting httpx-socks>=0.9.1 (from httpx-socks[asyncio]>=0.9.1->LiveRecorder==0.1.0)
+  Downloading httpx_socks-0.9.2-py3-none-any.whl.metadata (3.0 kB)
+Requirement already satisfied: future in /usr/local/lib/python3.10/dist-packages (from ffmpeg-python>=0.2.0->LiveRecorder==0.1.0) (1.0.0)
+Requirement already satisfied: anyio in /usr/local/lib/python3.10/dist-packages (from httpx>=0.27.0->httpx[http2]>=0.27.0->LiveRecorder==0.1.0) (3.7.1)
+Requirement already satisfied: certifi in /usr/local/lib/python3.10/dist-packages (from httpx>=0.27.0->httpx[http2]>=0.27.0->LiveRecorder==0.1.0) (2024.8.30)
+Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.10/dist-packages (from httpx>=0.27.0->httpx[http2]>=0.27.0->LiveRecorder==0.1.0) (1.0.7)
+Requirement already satisfied: idna in /usr/local/lib/python3.10/dist-packages (from httpx>=0.27.0->httpx[http2]>=0.27.0->LiveRecorder==0.1.0) (3.10)
+Requirement already satisfied: sniffio in /usr/local/lib/python3.10/dist-packages (from httpx>=0.27.0->httpx[http2]>=0.27.0->LiveRecorder==0.1.0) (1.3.1)
+Requirement already satisfied: h11<0.15,>=0.13 in /usr/local/lib/python3.10/dist-packages (from httpcore==1.*->httpx>=0.27.0->httpx[http2]>=0.27.0->LiveRecorder==0.1.0) (0.14.0)
+Collecting python-socks>=2.0.0 (from httpx-socks>=0.9.1->httpx-socks[asyncio]>=0.9.1->LiveRecorder==0.1.0)
+  Downloading python_socks-2.5.3-py3-none-any.whl.metadata (7.0 kB)
+Requirement already satisfied: async-timeout>=3.0.1 in /usr/local/lib/python3.10/dist-packages (from httpx-socks[asyncio]>=0.9.1->LiveRecorder==0.1.0) (4.0.3)
+Collecting h2<5,>=3 (from httpx[http2]>=0.27.0->LiveRecorder==0.1.0)
+  Downloading h2-4.1.0-py3-none-any.whl.metadata (3.6 kB)
+Collecting ply (from jsonpath-ng>=1.6.1->LiveRecorder==0.1.0)
+  Downloading ply-3.11-py2.py3-none-any.whl.metadata (844 bytes)
+Collecting isodate (from streamlink>=6.8.2->LiveRecorder==0.1.0)
+  Downloading isodate-0.7.2-py3-none-any.whl.metadata (11 kB)
+Requirement already satisfied: lxml<6,>=4.6.4 in /usr/local/lib/python3.10/dist-packages (from streamlink>=6.8.2->LiveRecorder==0.1.0) (5.3.0)
+Collecting pycountry (from streamlink>=6.8.2->LiveRecorder==0.1.0)
+  Downloading pycountry-24.6.1-py3-none-any.whl.metadata (12 kB)
+Collecting pycryptodome<4,>=3.4.3 (from streamlink>=6.8.2->LiveRecorder==0.1.0)
+  Downloading pycryptodome-3.21.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.4 kB)
+Requirement already satisfied: PySocks!=1.5.7,>=1.5.6 in /usr/local/lib/python3.10/dist-packages (from streamlink>=6.8.2->LiveRecorder==0.1.0) (1.7.1)
+Requirement already satisfied: requests<3,>=2.26.0 in /usr/local/lib/python3.10/dist-packages (from streamlink>=6.8.2->LiveRecorder==0.1.0) (2.32.3)
+Collecting trio-websocket<1,>=0.9.0 (from streamlink>=6.8.2->LiveRecorder==0.1.0)
+  Downloading trio_websocket-0.11.1-py3-none-any.whl.metadata (4.7 kB)
+Requirement already satisfied: typing-extensions>=4.0.0 in /usr/local/lib/python3.10/dist-packages (from streamlink>=6.8.2->LiveRecorder==0.1.0) (4.12.2)
+Requirement already satisfied: urllib3<3,>=1.26.0 in /usr/local/lib/python3.10/dist-packages (from streamlink>=6.8.2->LiveRecorder==0.1.0) (2.2.3)
+Requirement already satisfied: websocket-client<2,>=1.2.1 in /usr/local/lib/python3.10/dist-packages (from streamlink>=6.8.2->LiveRecorder==0.1.0) (1.8.0)
+Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-packages (from streamlink>=6.8.2->LiveRecorder==0.1.0) (1.2.2)
+Collecting trio<1,>=0.22.0 (from streamlink>=6.8.2->LiveRecorder==0.1.0)
+  Downloading trio-0.27.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting hyperframe<7,>=6.0 (from h2<5,>=3->httpx[http2]>=0.27.0->LiveRecorder==0.1.0)
+  Downloading hyperframe-6.0.1-py3-none-any.whl.metadata (2.7 kB)
+Collecting hpack<5,>=4.0 (from h2<5,>=3->httpx[http2]>=0.27.0->LiveRecorder==0.1.0)
+  Downloading hpack-4.0.0-py3-none-any.whl.metadata (2.5 kB)
+Requirement already satisfied: charset-normalizer<4,>=2 in /usr/local/lib/python3.10/dist-packages (from requests<3,>=2.26.0->streamlink>=6.8.2->LiveRecorder==0.1.0) (3.4.0)
+Requirement already satisfied: attrs>=23.2.0 in /usr/local/lib/python3.10/dist-packages (from trio<1,>=0.22.0->streamlink>=6.8.2->LiveRecorder==0.1.0) (24.2.0)
+Collecting sortedcontainers (from trio<1,>=0.22.0->streamlink>=6.8.2->LiveRecorder==0.1.0)
+  Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
+Collecting outcome (from trio<1,>=0.22.0->streamlink>=6.8.2->LiveRecorder==0.1.0)
+  Downloading outcome-1.3.0.post0-py2.py3-none-any.whl.metadata (2.6 kB)
+Collecting wsproto>=0.14 (from trio-websocket<1,>=0.9.0->streamlink>=6.8.2->LiveRecorder==0.1.0)
+  Downloading wsproto-1.2.0-py3-none-any.whl.metadata (5.6 kB)
+Downloading ffmpeg_python-0.2.0-py3-none-any.whl (25 kB)
+Downloading httpx_socks-0.9.2-py3-none-any.whl (12 kB)
+Downloading jsengine-1.0.7.post1-py2.py3-none-any.whl (17 kB)
+Downloading jsonpath_ng-1.7.0-py3-none-any.whl (30 kB)
+Downloading loguru-0.7.2-py3-none-any.whl (62 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.5/62.5 kB 4.7 MB/s eta 0:00:00
+Downloading quickjs-1.19.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl (2.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 31.8 MB/s eta 0:00:00
+Downloading streamlink-7.0.0-py3-none-any.whl (531 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 531.2/531.2 kB 24.9 MB/s eta 0:00:00
+Downloading h2-4.1.0-py3-none-any.whl (57 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.5/57.5 kB 4.5 MB/s eta 0:00:00
+Downloading pycryptodome-3.21.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 34.9 MB/s eta 0:00:00
+Downloading python_socks-2.5.3-py3-none-any.whl (52 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 52.9/52.9 kB 3.7 MB/s eta 0:00:00
+Downloading trio-0.27.0-py3-none-any.whl (481 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 481.7/481.7 kB 22.6 MB/s eta 0:00:00
+Downloading trio_websocket-0.11.1-py3-none-any.whl (17 kB)
+Downloading isodate-0.7.2-py3-none-any.whl (22 kB)
+Downloading ply-3.11-py2.py3-none-any.whl (49 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 49.6/49.6 kB 3.6 MB/s eta 0:00:00
+Downloading pycountry-24.6.1-py3-none-any.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 41.7 MB/s eta 0:00:00
+Downloading hpack-4.0.0-py3-none-any.whl (32 kB)
+Downloading hyperframe-6.0.1-py3-none-any.whl (12 kB)
+Downloading wsproto-1.2.0-py3-none-any.whl (24 kB)
+Downloading outcome-1.3.0.post0-py2.py3-none-any.whl (10 kB)
+Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+Building wheels for collected packages: LiveRecorder
+  Building wheel for LiveRecorder (pyproject.toml) ... done
+  Created wheel for LiveRecorder: filename=LiveRecorder-0.1.0-py3-none-any.whl size=9465 sha256=aec57e28116753866d0cab20d688557a0dd1f9b09b02d82855906badd3bbb6d2
+  Stored in directory: /tmp/pip-ephem-wheel-cache-gk_vu63_/wheels/5d/d3/8c/cd9d6d39fe560993dba3fca578c40852ff3b13f293b9c39992
+Successfully built LiveRecorder
+Installing collected packages: sortedcontainers, quickjs, python-socks, ply, wsproto, pycryptodome, pycountry, outcome, loguru, jsonpath-ng, jsengine, isodate, hyperframe, hpack, ffmpeg-python, trio, h2, trio-websocket, httpx-socks, streamlink, LiveRecorder
+Successfully installed LiveRecorder-0.1.0 ffmpeg-python-0.2.0 h2-4.1.0 hpack-4.0.0 httpx-socks-0.9.2 hyperframe-6.0.1 isodate-0.7.2 jsengine-1.0.7.post1 jsonpath-ng-1.7.0 loguru-0.7.2 outcome-1.3.0.post0 ply-3.11 pycountry-24.6.1 pycryptodome-3.21.0 python-socks-2.5.3 quickjs-1.19.4 sortedcontainers-2.4.0 streamlink-7.0.0 trio-0.27.0 trio-websocket-0.11.1 wsproto-1.2.0
+2024-11-26 21:01:57.382 | INFO     | __main__:start:53 - [Bilibili][方便]正在检测直播状态
+2024-11-26 21:01:57.383 | INFO     | __main__:start:54 - 预配置刷新间隔：10s
+1
+2024-11-26 21:01:58.057 | INFO     | __main__:get_streamlink:140 - 是否验证SSL：True
+2024-11-26 21:01:58.993 | INFO     | __main__:run_record:158 - [Bilibili][方便]开始录制：[2024.11.26 21.01.58][Bilibili][方便]LofiGirl的音乐自习室.flv
+2024-11-26 21:01:58.995 | INFO     | __main__:stream_writer:170 - [Bilibili][方便]获取到直播流链接：[2024.11.26 21.01.58][Bilibili][方便]LofiGirl的音乐自习室.flv
+https://d1--ov-gotcha207.bilivideo.com/live-bvc/763559/live_1685650605_47688319_2500/index.m3u8?expires=1732658518&len=0&oi=581816395&pt=web&qn=250&trid=1007ccc22aa2a56f3d85267f5c1aae4390c5&sigparams=cdn,expires,len,oi,pt,qn,trid&cdn=ov-gotcha207&sign=4187c71d80b2426da24ea2a9521e275a&site=25d5ee71f84869eddf72782415ccdbd7&free_type=0&mid=0&sche=ban&bvchls=1&trace=0&isp=other&rg=other&pv=other&deploy_env=prod&sl=1&sk=5bf07b9bbe6df2e0a6bc476fe3d9a64272675319e1bf242748fcda5ad9e12f7b&source=puv3_onetier&pp=rtmp&score=30&hot_cdn=0&origin_bitrate=658158&suffix=2500&p2p_type=-1&flvsk=4207df3de646838b084f14f252be3aff32e9f79d88eba2913a6cbca8199656ed&vd=bc&src=puv3&order=1
+2024-11-26 21:02:00.485 | INFO     | __main__:stream_writer:176 - [Bilibili][方便]正在录制：[2024.11.26 21.01.58][Bilibili][方便]LofiGirl的音乐自习室.flv
+[download] Written 157.52 MiB to …58][Bilibili][方便]LofiGirl的音乐自习室.flv (27m42s @ 92.18 KiB/s)2024-11-26 21:29:42.627 | WARNING  | __main__:run:236 - 用户中断录制，正在关闭直播流
+[download] Written 157.52 MiB to …58][Bilibili][方便]LofiGirl的音乐自习室.flv (27m42s @ 93.05 KiB/s)
+2024-11-26 21:29:42.954 | INFO     | __main__:run_ffmpeg:193 - [Bilibili][方便]开始ffmpeg封装：[2024.11.26 21.01.58][Bilibili][方便]LofiGirl的音乐自习室.flv
+[h264 @ 0x56a211e89100] co located POCs unavailable
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'bilibili_鹿乃/[2024.11.26 21.01.58][Bilibili][方便]LofiGirl的音乐自习室.flv':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 1
+    compatible_brands: isommp42avc1dash
+  Duration: 07:24:50.41, start: 25026.284000, bitrate: 49 kb/s
+  Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720, 38 kb/s, 30 fps, 30 tbr, 90k tbn, 60 tbc (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : (libobs version 30.2.3),BILIAV
+  Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 10 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+      vendor_id       : [0][0][0][0]
+Output #0, mp4, to 'bilibili_鹿乃/[2024.11.26 21.01.58][Bilibili][方便]LofiGirl的音乐自习室.mp4':
+  Metadata:
+    encoder         : Lavf58.76.100
+  Stream #0:0: Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720, q=2-31, 38 kb/s, 30 fps, 30 tbr, 90k tbn, 90k tbc (default)
+  Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 10 kb/s (default)
+Stream mapping:
+  Stream #0:0 -> #0:0 (copy)
+  Stream #0:1 -> #0:1 (copy)
+Press [q] to stop, [?] for help
+[mp4 @ 0x56a211f87400] Starting second pass: moving the moov atom to the beginning of the file
+frame=49860 fps=41710 q=-1.0 Lsize=  161324kB time=00:27:44.10 bitrate= 794.2kbits/s speed=1.39e+03x    
+video:126201kB audio:32958kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.360808%
+
+```
+
 ## 简介
 
 一款无人值守直播录制脚本，基于强大的[Streamlink](https://streamlink.github.io)
