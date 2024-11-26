@@ -205,12 +205,18 @@ class Bilibili(LiveRecoder):
     async def run(self):
         url = f'https://live.bilibili.com/{self.id}'
         if url not in recording:
+	    headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+                'Referer': 'https://www.bilibili.com'  # 添加 Referer 字段
+		    
             response = (await self.request(
                 method='GET',
                 url='https://api.live.bilibili.com/room/v1/Room/get_info',
-                params={'room_id': self.id}
+                params={'room_id': self.id},
+		headers=headers
             )).json()
-            print(response['data']['live_status'])
+            if response['data']['live_status']
+              print(response['data']['live_status'])
             if response['data']['live_status'] == 1:
                 title = response['data']['title']
                 stream = self.get_streamlink().streams(url).get('best')  # HTTPStream[flv]
