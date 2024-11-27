@@ -25,10 +25,6 @@ from streamlink_cli.streamrunner import StreamRunner
 
 recording: Dict[str, Tuple[StreamIO, FileOutput]] = {}
 
-if not os.path.exists("checkpoint.txt"):
-    with open("checkpoint.txt", 'w') as f:
-        f.write('0')
-
 
 		      
 class LiveRecoder:
@@ -51,8 +47,13 @@ class LiveRecoder:
         self.client = self.get_client()
 
     def check_checkpoint(self):
+
+        if not os.path.exists(f"{self.id}.txt"):
+            with open(f"{self.id}.txt", 'w') as f:
+                f.write('0')
+        
         try:
-            with open('checkpoint.txt', 'r') as f:
+            with open(f'{self.id}.txt', 'r') as f:
                 content = f.read().strip()
             return content == '1'
         except IOError:
@@ -61,7 +62,7 @@ class LiveRecoder:
 
     def update_checkpoint(self, value):
         try:
-            with open('checkpoint.txt', 'w') as f:
+            with open(f'{self.id}.txt', 'w') as f:
                 f.write(str(value))
         except IOError:
             logger.error('无法写入checkpoint.txt文件')
