@@ -96,7 +96,7 @@ class LiveRecoder:
                 self.client = self.get_client()
             except Exception as error:
                 logger.exception(f'{self.flag}直播检测错误\n{repr(error)}')
-
+            
     async def run(self):
         pass
 
@@ -253,7 +253,7 @@ class Bilibili(LiveRecoder):
             if response['data']['live_status']:
                 print(response['data']['live_status'])
             if response['data']['live_status'] != 1:
-                exit #不需要循环检查
+                return #不需要循环检查
             if response['data']['live_status'] == 1:
 
                 with open(f"{self.id}.txt", "w") as f:
