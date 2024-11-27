@@ -252,7 +252,7 @@ class Bilibili(LiveRecoder):
             if response['data']['live_status']:
                 print(response['data']['live_status'])
             if response['data']['live_status'] != 1:
-                finish
+                return
             if response['data']['live_status'] == 1:
 
                 with open("checkpoint.txt", "w") as f:
