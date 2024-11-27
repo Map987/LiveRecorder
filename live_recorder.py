@@ -182,7 +182,7 @@ class LiveRecoder:
 
     def run_record(self, stream: Union[StreamIO, HTTPStream], url, title, format):
         # 获取输出文件名
-        print("stream", stream)
+        
         filename = self.get_filename(title, format)
         if stream:
             logger.info(f'{self.flag}开始录制：{filename}')
@@ -256,7 +256,7 @@ class Bilibili(LiveRecoder):
                 return
             if response['data']['live_status'] == 1:
 
-                with open("checkpoint.txt", "w") as f:
+                with open(f"{self.id}.txt", "w") as f:
                     f.write("1")
                 title = response['data']['title']
                 stream = self.get_streamlink().streams(url).get('best')  # HTTPStream[flv]
