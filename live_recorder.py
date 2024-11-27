@@ -260,7 +260,7 @@ class Bilibili(LiveRecoder):
                     f.write("1")
                 title = response['data']['title']
                 stream = self.get_streamlink().streams(url).get('best')  # HTTPStream[flv]
-		#这行代码首先调用  self.get_streamlink()  方法来创建一个  streamlink  会话，self.get_streamlink返回session， 然后使用  streams(url)  方法来获取给定 URL 的所有可用流。
+		#这行代码首先调用  self.get_streamlink()  方法来创建一个  streamlink会话，self.get_streamlink返回session，也就是session=streamlink.session.Streamlink， 然后使用  session.streams(url)  方法来获取给定 URL 的所有可用流。streams(url)本质就是把url，也就是live.bilibili.com去正则等等匹配b站插件https://github.com/streamlink/streamlink/blob/master/src/streamlink/plugins/bilibili.py  文档 https://streamlink.github.io/api/session.html
                 #from streamlink.stream import StreamIO, HTTPStream, HLSStream
 		     #streamlink.stream传入https://api.live.bilibili.com/room/v1/Room/get_info链接，去查询streamlink的b站下载功能
                 print(f"房间{self.id} streams(url)方法", self.get_streamlink().streams(url))
