@@ -74,7 +74,8 @@ class LiveRecoder:
         while True:
 
             if self.check_checkpoint():
-                break
+                break#每5分运行一次，如果正在直播，把一个room_id.txt文件内容修改为1，别的GitHub action检测到room_id.txt为1则break该直播
+
             try:
                 logger.info(f'{self.flag}正在检测直播状态')
                 logger.info(f'预配置刷新间隔：{self.interval}s')
@@ -189,7 +190,7 @@ class LiveRecoder:
             # 录制成功、format配置存在、且不等于直播平台默认格式时，运行ffmpeg封装
 
             #暂停怎么也能到这里
-            if result:
+            if result:#每5分运行一次，如果正在直播，把一个room_id.txt文件内容修改为1，别的GitHub action检测到room_id.txt为1则break该直播，此处是直播完重新修改为0
                 self.update_checkpoint(0)
 		    
             if result and self.format and self.format != format:
