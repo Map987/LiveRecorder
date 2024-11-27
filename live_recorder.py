@@ -74,7 +74,7 @@ class LiveRecoder:
         while True:
 
             if self.check_checkpoint():
-                break#每5分运行一次，如果正在直播，把一个room_id.txt文件内容修改为1，别的GitHub action检测到room_id.txt为1则break该直播
+                break#每5分运行一次，如果正在直播，把一个room_id.txt文件内容修改为1，别的GitHub action检测到room_id.txt为1，则break该action内该房间的录制
 
             try:
                 logger.info(f'{self.flag}正在检测直播状态')
@@ -253,7 +253,7 @@ class Bilibili(LiveRecoder):
             if response['data']['live_status']:
                 print(response['data']['live_status'])
             if response['data']['live_status'] != 1:
-                return
+                exit #不需要循环检查
             if response['data']['live_status'] == 1:
 
                 with open(f"{self.id}.txt", "w") as f:
