@@ -36,7 +36,6 @@ url = "https://api.github.com/repos/Map987/BAAS/contents/cookie.env"
 # Bearer Token
 bearer_token = ""
 encode_code = ""
-
 # Create a request object with the Bearer Token
 req = urllib.request.Request(url)
 req.add_header("Authorization", f"Bearer {bearer_token}")
@@ -255,6 +254,8 @@ class LiveRecoder:
 	     
             video_paths = get_video_paths(self.output)
             for video_path in video_paths:
+                import upload
+                from upload import upload_video #如果没有 import upload，可能只有upload.py里面的def upload_video函数，没有里面的其他包
                 result = await upload_video(video_path)
                 print(result)
             logger.info(f'{self.flag}停止录制：{filename}')
