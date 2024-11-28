@@ -83,7 +83,10 @@ def get_video_paths(folder_path):
                 video_paths.append(os.path.join(root, file))
 
     return video_paths
-	
+
+folder_checkpoint = "checkpoint"
+os.makedirs(folder_checkpoint, exist_ok=True) 
+
 class LiveRecoder:
     def __init__(self, config: dict, user: dict):
         self.id = user['id']
@@ -104,13 +107,13 @@ class LiveRecoder:
         self.client = self.get_client()
         self.event = asyncio.Event()
     def check_checkpoint(self):
-
-        if not os.path.exists(f"{self.id}.txt"):
-            with open(f"{self.id}.txt", 'w') as f:
+        check_path = os.path.join(folder_checkpoint, f"{self.id}.txt")
+        if not os.path.exists(check_path): #txt文件，录制时候内容为1，结束录制修改为0
+            with open(check_path, 'w') as f:
                 f.write('0')
         
         try:
-            with open(f'{self.id}.txt', 'r') as f:
+            with open(check_path, 'r') as f:
                 content = f.read().strip()
             return content == '1'
         except IOError:
@@ -118,8 +121,10 @@ class LiveRecoder:
             return False
 
     def update_checkpoint(self, value):
+        check_path = os.path.join(folder_checkpoint, f"{self.id}.txt")
+
         try:
-            with open(f'{self.id}.txt', 'w') as f:
+            with open(check_path, 'w') as f:
                 f.write(str(value))
         except IOError:
             logger.error('无法写入checkpoint.txt文件')
