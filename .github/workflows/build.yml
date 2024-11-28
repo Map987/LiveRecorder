@@ -24,9 +24,9 @@ jobs:
       - name: Install requirements
         run: |
           python3 -m pip install --upgrade pip
-          pip3 install huggingface_hub "streamlink>=6.8.2" "httpx[http2]>=0.27.0" "ffmpeg-python>=0.2.0" "loguru>=0.7.2" "jsonpath-ng>=1.6.1" "jsengine>=1.0.7.post1" "quickjs>=1.19.4" "httpx-socks[asyncio]>=0.9.1" nest_asyncio
+          pip3 install "streamlink>=6.8.2" "httpx[http2]>=0.27.0" "ffmpeg-python>=0.2.0" "loguru>=0.7.2" "jsonpath-ng>=1.6.1" "jsengine>=1.0.7.post1" "quickjs>=1.19.4" "httpx-socks[asyncio]>=0.9.1" nest_as
       - name: Run
-        run: python3 ../live_recorder.py --bearer_token --encode_code
+        run: python3 ../live_recorder.py ${{ secrets.bearer_token }} ${{ secrets.encode_code }}
 
 
       - name: Commit
