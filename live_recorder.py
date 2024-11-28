@@ -25,8 +25,57 @@ from streamlink_cli.streamrunner import StreamRunner
 
 recording: Dict[str, Tuple[StreamIO, FileOutput]] = {}
 
+ 
+from bilibili_api import sync, video_uploader, Credential
+from bilibili_api import settings
+import bilibili_api
+import time
+settings.timeout = 100.0
+settings.wbi_retry_times = 10 # defaults to 3
+settings.request_log = False
 
-		      
+async def upload_video(video_path):
+    credential = Credential(sessdata=decrypted_sessdata, bili_jct=decrypted_bili_jct, buvid3="")
+    vu_meta = video_uploader.VideoMeta(
+        tid=130,
+        title='title',
+        tags=['音乐综合', '音乐'],
+        desc='',
+        cover="Screenshot_20241128_055608.jpg",
+        no_reprint=True
+    )
+
+    page = video_uploader.VideoUploaderPage(
+        path=video_path,
+        title='标题',
+        description='简介',
+    )
+
+    uploader = video_uploader.VideoUploader([page], vu_meta, credential, line=video_uploader.Lines.WS)
+    output = []
+
+    @uploader.on("__ALL__")
+    async def ev(data):
+        print(data)
+        output.append(data)
+
+    await uploader.start()
+    return output[-1]
+
+
+import os
+
+def get_video_paths(folder_path):
+    video_extensions = ['.mp4', '.flv', '.mov', '.mkv', '.flv', '.wmv', '.mpg', '.mpeg', '.m4v', '.3gp', '.3g2', '.webm', '.ts']
+    video_paths = []
+
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if any(file.lower().endswith(ext) for ext in video_extensions):
+                video_paths.append(os.path.join(root, file))
+
+    return video_paths
+	
 class LiveRecoder:
     def __init__(self, config: dict, user: dict):
         self.id = user['id']
@@ -197,6 +246,11 @@ class LiveRecoder:
             if result and self.format and self.format != format:
                 self.run_ffmpeg(filename, format)
             recording.pop(url, None)
+	     
+            video_paths = get_video_paths(self.output)
+            for video_path in video_paths:
+                result = await upload_video(video_path)
+                print(result)
             logger.info(f'{self.flag}停止录制：{filename}')
         else:
             logger.error(f'{self.flag}无可用直播源：{filename}')
