@@ -2,8 +2,9 @@ name: Action Practice
 
 on:
   push:
-    paths:
-      - '!**/*.txt'
+    paths-ignore:
+      - '.gitignore'
+      - 'checkpoint/**'  
   schedule:
    - cron: "*/5 * * * *"
   
