@@ -253,7 +253,7 @@ class LiveRecoder:
                 self.run_ffmpeg(filename, format)
             recording.pop(url, None)
             video_paths = get_video_paths(self.output)
-                for video_path in video_paths:
+            for video_path in video_paths:
                     import upload
                     from upload import upload_video #如果没有 import upload，可能只有upload.py里面的def upload_video函数，没有里面的其他包
                     result = await upload_video(video_path)
