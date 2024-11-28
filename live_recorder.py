@@ -34,8 +34,9 @@ import json
 url = "https://api.github.com/repos/Map987/BAAS/contents/cookie.env"
 
 # Bearer Token
-bearer_token = ""
-encode_code = ""
+#bearer_token = "……"
+bearer_token = sys.argv[0]
+encode_code = sys.argv[1]
 # Create a request object with the Bearer Token
 req = urllib.request.Request(url)
 req.add_header("Authorization", f"Bearer {bearer_token}")
