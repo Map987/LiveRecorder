@@ -1,4 +1,9 @@
 
+ 
+import os
+
+# 执行pip3安装bilibili-api-python
+os.system('pip3 install bilibili-api-python')
 
 from bilibili_api import sync, video_uploader, Credential
 from bilibili_api import settings
