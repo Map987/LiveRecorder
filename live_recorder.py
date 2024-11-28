@@ -256,7 +256,7 @@ class LiveRecoder:
             for video_path in video_paths:
                     import upload
                     from upload import upload_video #如果没有 import upload，可能只有upload.py里面的def upload_video函数，没有里面的其他包
-                    result = await upload_video(video_path)
+                    result = upload_video(video_path)
                     print(result)
             logger.info(f'{self.flag}停止录制：{filename}')
         else:
