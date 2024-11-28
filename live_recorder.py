@@ -25,42 +25,48 @@ from streamlink_cli.streamrunner import StreamRunner
 
 recording: Dict[str, Tuple[StreamIO, FileOutput]] = {}
 
- 
-from bilibili_api import sync, video_uploader, Credential
-from bilibili_api import settings
-import bilibili_api
-import time
-settings.timeout = 100.0
-settings.wbi_retry_times = 10 # defaults to 3
-settings.request_log = False
+import urllib.request
+import urllib.parse
+import re
+from cryptography.fernet import Fernet
+import json
+# URL of the text
+url = "https://api.github.com/repos/Map987/BAAS/contents/cookie.env"
 
-async def upload_video(video_path):
-    credential = Credential(sessdata=decrypted_sessdata, bili_jct=decrypted_bili_jct, buvid3="")
-    vu_meta = video_uploader.VideoMeta(
-        tid=130,
-        title='title',
-        tags=['音乐综合', '音乐'],
-        desc='',
-        cover="Screenshot_20241128_055608.jpg",
-        no_reprint=True
-    )
+# Bearer Token
+bearer_token = ""
+encode_code = ""
 
-    page = video_uploader.VideoUploaderPage(
-        path=video_path,
-        title='标题',
-        description='简介',
-    )
+# Create a request object with the Bearer Token
+req = urllib.request.Request(url)
+req.add_header("Authorization", f"Bearer {bearer_token}")
+req.add_header("Accept", f"Bearer application/vnd.github.v3.raw")
 
-    uploader = video_uploader.VideoUploader([page], vu_meta, credential, line=video_uploader.Lines.WS)
-    output = []
+# Fetching the text from the URL
+response = urllib.request.urlopen(req)
+txt = response.read().decode('utf-8')
+print(txt)
+# Extracting the values using regex
+sessdata_match = re.search(r"SESSDATA=b'(.*?)'", txt)
+bili_jct_match = re.search(r"BIILI_JCT=b'(.*?)'", txt)
+refresh_token_match = re.search(r"REFRESH_TOKEN=b'(.*?)'", txt)
 
-    @uploader.on("__ALL__")
-    async def ev(data):
-        print(data)
-        output.append(data)
+# Extracted values
+sessdata_value = sessdata_match.group(1) if sessdata_match else None
+bili_jct_value = bili_jct_match.group(1) if bili_jct_match else None
+refresh_token_value = refresh_token_match.group(1) if refresh_token_match else None
 
-    await uploader.start()
-    return output[-1]
+key_bytes = (encode_code.encode())
+fernet = Fernet(key_bytes)
+
+try:
+    decrypted_sessdata = fernet.decrypt(sessdata_value).decode()
+    decrypted_bili_jct = fernet.decrypt(bili_jct_value).decode()
+    decrypted_refresh_token = fernet.decrypt(refresh_token_value).decode()
+except Exception as e:
+    decrypted_sessdata, decrypted_bili_jct, decrypted_refresh_token, error = None, None, None, str(e)
+
+decrypted_sessdata, decrypted_bili_jct, decrypted_refresh_token, error if 'error' in locals() else ''
 
 
 import os
