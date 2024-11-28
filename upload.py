@@ -1,7 +1,4 @@
-
- 
 import os
-
 # 执行pip3安装bilibili-api-python
 os.system('pip3 install bilibili-api-python')
 
@@ -23,20 +20,16 @@ async def upload_video(video_path):
         cover="Screenshot_20241128_055608.jpg",
         no_reprint=True
     )
-
     page = video_uploader.VideoUploaderPage(
         path=video_path,
         title='标题',
         description='简介',
     )
-
     uploader = video_uploader.VideoUploader([page], vu_meta, credential, line=video_uploader.Lines.WS)
     output = []
-
     @uploader.on("__ALL__")
     async def ev(data):
         print(data)
         output.append(data)
-
     await uploader.start()
     return output[-1]
