@@ -1,8 +1,9 @@
 name: Action Practice
 
-
 on:
   push:
+    paths:
+      - '!**/*.txt'
   schedule:
    - cron: "*/5 * * * *"
   
