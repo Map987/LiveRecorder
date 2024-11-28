@@ -42,7 +42,7 @@ encode_code = sys.argv[1]
 # Create a request object with the Bearer Token
 req = urllib.request.Request(url)
 req.add_header("Authorization", f"Bearer {bearer_token}")
-req.add_header("Accept", f"Bearer application/vnd.github.v3.raw")
+req.add_header("Accept", "application/vnd.github.v3.raw")
 
 # Fetching the text from the URL
 response = urllib.request.urlopen(req)
