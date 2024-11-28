@@ -4,20 +4,6 @@
   "user": [
     {
       "platform": "Bilibili",
-      "id": "27519423",
-      "name": "方便",
-      "interval": 10,
-      "format": "mp4",
-      "output": "24小时直播间",
-      "proxy": "",
-      "headers": {
-        "Referer": "https://live.bilibili.com/"
-      },
-      "crypto_js_url": "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js",
-      "cookies": "SESSDATA=xxxxx; bili_jct=xxxxx"
-    },
-    {
-      "platform": "Bilibili",
       "id": "23455810",
       "name": "北斗导航compass",
       "interval": 10,
@@ -37,6 +23,20 @@
       "interval": 10,
       "format": "mp4",
       "output": "-余怂怂-",
+      "proxy": "",
+      "headers": {
+        "Referer": "https://live.bilibili.com/"
+      },
+      "crypto_js_url": "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js",
+      "cookies": "SESSDATA=xxxxx; bili_jct=xxxxx"
+    },
+    {
+      "platform": "Bilibili",
+      "id": "545100",
+      "name": "马里奥红叔",
+      "interval": 10,
+      "format": "mp4",
+      "output": "马里奥",
       "proxy": "",
       "headers": {
         "Referer": "https://live.bilibili.com/"
