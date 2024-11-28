@@ -252,7 +252,6 @@ class LiveRecoder:
             if result and self.format and self.format != format:
                 self.run_ffmpeg(filename, format)
             recording.pop(url, None)
-	     
             video_paths = get_video_paths(self.output)
             for video_path in video_paths:
                 import upload
