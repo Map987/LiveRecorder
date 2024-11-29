@@ -85,7 +85,7 @@ def get_video_paths(folder_path):
     return video_paths
 
 folder_checkpoint = "checkpoint"
-os.makedirs(folder_checkpoint, exist_ok=True) 
+os.makedirs(folder_checkpoint, exist_ok=True)
 
 class LiveRecoder:
     def __init__(self, config: dict, user: dict):
