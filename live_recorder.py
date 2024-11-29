@@ -120,15 +120,38 @@ class LiveRecoder:
             logger.error('无法读取checkpoint.txt文件')
             return False
 
+
+
     def update_checkpoint(self, value):
-        check_path = os.path.join(folder_checkpoint, f"{self.id}.txt")
+        FILE = f"checkpoint/{self.id}.txt"  # 文件路径
+        headers = {
+            'Accept': 'application/vnd.github.v3+json',
+            'Authorization': f'token {bearer_token}'
+        }
 
-        try:
-            with open(check_path, 'w') as f:
-                f.write(str(value))
-        except IOError:
-            logger.error('无法写入checkpoint.txt文件')
+        response = requests.get(
+            f'https://api.github.com/repos/{self.REPO}/contents/{FILE}',
+            headers=headers,
+        )
+        sha = response.json().get("sha")
 
+        # 假设content变量已经被定义，并且是一个字符串
+        content = str(value)
+
+        # 将内容转换为base64编码
+        encoded_content = base64.b64encode(content.encode()).decode()
+
+        data = {
+            "message": "测试测试这里的是上传commit描述",
+            "content": encoded_content,
+            "sha": sha
+        }
+
+        put_response = requests.put(
+            f'https://api.github.com/repos/{self.REPO}/contents/{FILE}',
+            headers=headers,
+            json=data
+        )
 
     async def start(self):
         self.ssl = True
@@ -249,6 +272,7 @@ class LiveRecoder:
         if stream:
             logger.info(f'{self.flag}开始录制：{filename}')
             # 调用streamlink录制直播
+            self.update_checkpoint(1) #开始录制，更新checkpoint/{self.room_id}txt文件内容为1，别的GitHub action任务，检测到为1就break执行，确保只有一个任务代码在录制
             result = self.stream_writer(stream, url, filename)
             # 录制成功、format配置存在、且不等于直播平台默认格式时，运行ffmpeg封装
 
