@@ -34,7 +34,7 @@ from cryptography.fernet import Fernet
 import json
 # URL of the text
 url = "https://api.github.com/repos/Map987/BAAS/contents/cookie.env"
-
+REPO="Map987/LiveRecorder"
 # Bearer Token
 import sys
 bearer_token = sys.argv[1]
@@ -132,7 +132,7 @@ class LiveRecoder:
         }
 
         response = requests.get(
-            f'https://api.github.com/repos/{self.REPO}/contents/{FILE}',
+            f'https://api.github.com/repos/{REPO}/contents/{FILE}',
             headers=headers,
         )
         sha = response.json().get("sha")
