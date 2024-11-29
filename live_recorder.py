@@ -108,6 +108,7 @@ class LiveRecoder:
         self.get_cookies()
         self.client = self.get_client()
         self.event = asyncio.Event()
+        self.REPO = "Map987/LiveRecorder"
     def check_checkpoint(self):
         check_path = os.path.join(folder_checkpoint, f"{self.id}.txt")
         if not os.path.exists(check_path): #txt文件，录制时候内容为1，结束录制修改为0
@@ -132,7 +133,7 @@ class LiveRecoder:
         }
 
         response = requests.get(
-            f'https://api.github.com/repos/{REPO}/contents/{FILE}',
+            f'https://api.github.com/repos/{self.REPO}/contents/{FILE}',
             headers=headers,
         )
         sha = response.json().get("sha")
